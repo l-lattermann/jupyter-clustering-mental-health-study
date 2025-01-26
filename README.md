@@ -1,24 +1,20 @@
 
-# **Data Preprocessing and Analysis Project**
+# **Data Preprocessing, Clustering and Analysis Project**
 
 ## **Project Description**
-This project focuses on preparing a dataset for machine learning tasks by performing data preprocessing, including scaling, encoding, and feature engineering. The dataset contains a mix of numerical, categorical, and ordinal data, and this pipeline ensures the data is transformed correctly for downstream analysis or modeling.
+A university project for the course "Machine learning - unsupervised learning". 
+In the project the "OSMI Mental Health in Tech Survey 2016" is preprocessed, clustered and analysed to derive some insights about mental health of employees in the Tech sector. 
 
----
+The data was retrieved from:
+[https://www.kaggle.com/datasets/osmi/mental-health-in-tech-2016](https://www.kaggle.com/datasets/osmi/mental-health-in-tech-2016)
 
-## **Key Features**
-- **Ordinal Encoding**: Encodes ordinal categorical variables based on a predefined mapping.
-- **One-Hot Encoding**: Converts non-ordinal categorical features into binary columns.
-- **Standard Scaling**: Scales numerical features to have a mean of 0 and a standard deviation of 1.
-- **Pipeline Integration**: Combines all preprocessing steps into a unified `ColumnTransformer` pipeline.
-- **Validation**: Provides methods to inspect and validate transformations.
 
 ---
 
 ## **Project Files**
 - `data_analysis.ipynb`: Jupyter Notebook containing the implementation of the data preprocessing pipeline, along with analysis and validation steps.
 - `README.md`: This file provides an overview of the project.
-- Dataset files: Ensure your dataset is available in the working directory.
+- `/data`: Directory for input and output data
 
 ---
 
@@ -34,17 +30,31 @@ Ensure you have the following installed:
   - `matplotlib`
   - `seaborn`
 
-### **Installation**
-1. Clone the repository or download the project files.
-2. Create a virtual environment and activate it:
-   ```bash
-   python -m venv venv
-   source venv/bin/activate  # On Windows, use: venv\Scripts\activate
-   ```
-3. Install the dependencies:
-   ```bash
-   pip install -r requirements.txt
-   ```
+## Installation
+### Virtual environment venv
+It is recommended to install into a virtual environment to avoid package conflicts in your Python installation.
+### Create a venv
+In the Habit-tracker-project folder run:
+#### Windows:
+````cmd
+py -m venv .venv
+````
+#### MacOS:
+````cmd
+python3 -m venv .venv
+````
+     
+
+### Activate the venv
+In the Habit-tracker-project folder run:
+#### Windows:
+````cmd
+.venv\Scripts\activate
+````
+#### MacOS:
+````cmd
+source .venv/bin/activate
+````
 
 ---
 
@@ -57,24 +67,16 @@ Ensure you have the following installed:
 
 ## **File Structure**
 ```
-├── data_analysis.ipynb      # Jupyter notebook for preprocessing and analysis
-├── README.md                # Project documentation
-└── requirements.txt         # List of required Python packages
+├── data/
+│   ├── plot_images/          # Contains all generated plots
+│   ├── encoded_data.csv      # Encoded dataset
+│   ├── gmm_data.csv          # Data for GMM clustering
+│   ├── kmeans_data.csv       # Data for KMeans clustering
+│   ├── mental-health-in-tech-2022.csv  # Original dataset
+│   ├── prep_data.csv         # Preprocessed data
+├── data_analysis.ipynb       # Jupyter notebook for analysis
+├── README.md                 # Project documentation
+├── requirements.txt          # Required Python packages
 ```
 
 ---
-
-## **Pipeline Overview**
-
-### **Steps in the Pipeline**
-1. **Numerical Features**: Scaled using `StandardScaler` for normalization.
-2. **Categorical Features**: One-hot encoded using `OneHotEncoder`.
-3. **Ordinal Features**: Encoded using `OrdinalEncoder` with predefined mappings.
-4. **Validation**: Cross-check transformations with the original dataset.
-
----
-
-## **Validation Steps**
-- Check transformed data for correctness.
-- Inspect feature names and ensure transformations are applied correctly.
-- Verify the shapes of original and processed data.
